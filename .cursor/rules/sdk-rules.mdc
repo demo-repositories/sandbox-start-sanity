@@ -1,0 +1,71 @@
+---
+globs: apps/sdk/*
+alwaysApply: false
+---
+
+# Sanity App SDK Development Rules
+
+## Overview
+This application uses the **Sanity App SDK** (`@sanity/sdk-react`) for creating Sanity applications with React hooks and components.
+
+**Official Documentation:** https://reference.sanity.io/_sanity/sdk-react/
+
+## Development Guidelines
+
+### 1. SDK-First Approach
+When working in the `apps/sdk/` directory, you MUST:
+
+- **Prioritize SDK solutions**: Always use hooks and helpers from `@sanity/sdk-react` first
+- **Avoid redundant packages**: Only use other Sanity packages (`@sanity/client`, `@sanity/ui`, etc.) AFTER confirming the SDK cannot accomplish the task
+- **Check SDK capabilities**: Before implementing custom solutions, verify if the SDK provides the needed functionality
+
+### 2. Preferred SDK Usage Patterns
+
+#### React Hooks
+Use SDK React hooks for:
+- Data fetching and mutations
+- Authentication and user management
+- Document operations
+- Real-time subscriptions
+- Studio integration
+
+#### SDK Components and Utilities
+Use SDK-provided components and utilities for:
+- UI components that integrate with Sanity
+- Form handling
+- Validation
+- Error handling
+
+### 3. Documentation and References
+
+Always reference the official SDK documentation when:
+- Implementing new features
+- Debugging issues
+- Understanding available APIs
+- Finding code examples
+
+**Primary Resources:**
+- App SDK reference docs
+- SDK Explorer for example implementations
+- Conceptual overview and quickstart guide
+
+### 4. Development Workflow
+
+1. **Research SDK capabilities** before writing custom code
+2. **Use SDK hooks and components** as the primary solution
+3. **Fallback to other packages** only when SDK is insufficient
+4. **Document any non-SDK usage** with justification
+
+### 5. Code Organization
+
+- Import SDK hooks and components as the primary dependencies
+- Group SDK imports separately from other Sanity package imports
+- Comment when using non-SDK solutions and why
+
+
+### 6. Migration and Updates
+
+When updating or refactoring:
+- Check if newer SDK versions provide better solutions
+- Migrate from direct Sanity package usage to SDK equivalents when possible
+- Follow SDK migration guides for version updates
