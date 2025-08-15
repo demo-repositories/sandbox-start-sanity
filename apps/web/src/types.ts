@@ -32,3 +32,10 @@ export type SanityRichTextBlock = Extract<
 >;
 
 export type Maybe<T> = T | null | undefined;
+
+export type EventsListType = {
+  title?: string;
+  description?: string;
+  showPastEvents?: boolean;
+  maxEvents?: number;
+};

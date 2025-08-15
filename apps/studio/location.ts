@@ -11,11 +11,31 @@ export const locations = {
         locations: [
           {
             title: doc?.title || "Untitled",
-            href: `${doc?.slug}`,
+            href: `/blog/${doc?.slug}`,
           },
           {
             title: "Blog",
             href: "/blog",
+          },
+        ],
+      };
+    },
+  }),
+  event: defineLocations({
+    select: {
+      title: "title",
+      slug: "slug.current",
+    },
+    resolve: (doc) => {
+      return {
+        locations: [
+          {
+            title: doc?.title || "Untitled",
+            href: `/events/${doc?.slug}`,
+          },
+          {
+            title: "Events",
+            href: "/events",
           },
         ],
       };

@@ -1,6 +1,7 @@
 import { orderableDocumentListDeskItem } from "@sanity/orderable-document-list";
 import {
   BookMarked,
+  Calendar,
   CogIcon,
   File,
   FileText,
@@ -121,6 +122,7 @@ export const structure = (
         title: "FAQs",
         icon: MessageCircleQuestion,
       }),
+      createList({ S, type: "event", title: "Events", icon: Calendar }),
       createList({ S, type: "author", title: "Authors", icon: User }),
       S.divider(),
       S.listItem()

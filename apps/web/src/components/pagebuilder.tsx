@@ -8,6 +8,8 @@ import type { QueryHomePageDataResult } from "@/lib/sanity/sanity.types";
 import type { PagebuilderType } from "@/types";
 
 import { CTABlock } from "./sections/cta";
+import { EventsList } from "./sections/events-list";
+import { FeaturedEvent } from "./sections/featured-event";
 import { FaqAccordion } from "./sections/faq-accordion";
 import { FeatureCardsWithIcon } from "./sections/feature-cards-with-icon";
 import { HeroBlock } from "./sections/hero";
@@ -32,6 +34,8 @@ type PageData = {
 
 const BLOCK_COMPONENTS = {
   cta: CTABlock,
+  eventsList: EventsList,
+  featuredEvent: FeaturedEvent,
   faqAccordion: FaqAccordion,
   hero: HeroBlock,
   featureCardsIcon: FeatureCardsWithIcon,

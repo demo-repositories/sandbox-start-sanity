@@ -148,6 +148,44 @@ const subscribeNewsletterBlock = /* groq */ `
   }
 `;
 
+const eventsListBlock = /* groq */ `
+  _type == "eventsList" => {
+    ...,
+  }
+`;
+
+const featuredEventBlock = /* groq */ `
+  _type == "featuredEvent" => {
+    ...,
+    "event": event->{
+      _id,
+      title,
+      description,
+      dateTime,
+      location,
+      registrationLink,
+      "slug": slug.current,
+      featureImage{
+        ...,
+        ...asset->{
+          "alt": coalesce(altText, originalFilename, "no-alt"),
+          "blurData": metadata.lqip,
+          "dominantColor": metadata.palette.dominant.background
+        }
+      }
+    },
+    backgroundImage{
+      ...,
+      ...asset->{
+        "alt": coalesce(altText, originalFilename, "no-alt"),
+        "blurData": metadata.lqip,
+        "dominantColor": metadata.palette.dominant.background
+      }
+    },
+    ${buttonsFragment}
+  }
+`;
+
 const featureCardsIconBlock = /* groq */ `
   _type == "featureCardsIcon" => {
     ...,
@@ -167,6 +205,8 @@ const pageBuilderFragment = /* groq */ `
     ${heroBlock},
     ${faqAccordionBlock},
     ${featureCardsIconBlock},
+    ${eventsListBlock},
+    ${featuredEventBlock},
     ${subscribeNewsletterBlock},
     ${imageLinkCardsBlock}
   }
@@ -383,5 +423,25 @@ export const querySettingsData = defineQuery(`
     "logo": logo.asset->url + "?w=80&h=40&dpr=3&fit=max",
     "socialLinks": socialLinks,
     "contactEmail": contactEmail,
+  }
+`);
+
+export const getEventsQuery = defineQuery(`
+  *[_type == "event" && defined(dateTime) && (defined(slug.current))] | order(dateTime asc) [$start...$end] {
+    _id,
+    title,
+    description,
+    dateTime,
+    location,
+    registrationLink,
+    "slug": slug.current,
+    featureImage{
+      ...,
+      ...asset->{
+        "alt": coalesce(altText, originalFilename, "no-alt"),
+        "blurData": metadata.lqip,
+        "dominantColor": metadata.palette.dominant.background
+      }
+    }
   }
 `);
