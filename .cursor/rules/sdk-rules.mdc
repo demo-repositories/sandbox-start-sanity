@@ -6,9 +6,11 @@ alwaysApply: false
 # Sanity App SDK Development Rules
 
 ## Overview
-This application uses the **Sanity App SDK** (`@sanity/sdk-react`) for creating Sanity applications with React hooks and components.
+This application uses the **Sanity App SDK** (`@sanity/sdk-react`) for creating Sanity applications with React hooks and components, and **Sanity UI** (`@sanity/ui`) as the primary UI component library.
 
-**Official Documentation:** https://reference.sanity.io/_sanity/sdk-react/
+**Official Documentation:** 
+- SDK: https://reference.sanity.io/_sanity/sdk-react/
+- UI: https://www.sanity.io/ui/docs
 
 ## Development Guidelines
 
@@ -36,6 +38,19 @@ Use SDK-provided components and utilities for:
 - Validation
 - Error handling
 
+#### Sanity UI Components
+This application uses **Sanity UI** (`@sanity/ui`) as the primary UI component library. When building interfaces, you MUST:
+
+- **Default to Sanity UI components**: Always use components from `@sanity/ui` first (Button, Card, Text, Box, Flex, etc.)
+- **Leverage the theme system**: Use Sanity UI's built-in theming for consistent styling
+- **Use Sanity UI primitives**: Prefer Sanity UI layout and typography components over custom HTML elements
+- **Reference Sanity UI documentation**: https://www.sanity.io/ui/docs for component APIs and examples
+
+**Available through SanityUI provider:**
+- The app includes a `SanityUI` wrapper component that provides ThemeProvider and ToastProvider
+- All components have access to the Sanity UI theme and design system
+- Consistent spacing, colors, and typography are automatically applied
+
 ### 3. Documentation and References
 
 Always reference the official SDK documentation when:
@@ -52,15 +67,34 @@ Always reference the official SDK documentation when:
 ### 4. Development Workflow
 
 1. **Research SDK capabilities** before writing custom code
-2. **Use SDK hooks and components** as the primary solution
-3. **Fallback to other packages** only when SDK is insufficient
-4. **Document any non-SDK usage** with justification
+2. **Use SDK hooks and components** as the primary solution for data operations
+3. **Use Sanity UI components** as the primary solution for all UI elements
+4. **Fallback to other packages** only when SDK and Sanity UI are insufficient
+5. **Document any non-SDK/non-Sanity-UI usage** with justification
+
+**UI Development Priority:**
+- First: Check if Sanity UI has the needed component
+- Second: Compose existing Sanity UI components to create the desired interface
+- Last resort: Use custom HTML elements or third-party UI libraries
 
 ### 5. Code Organization
 
 - Import SDK hooks and components as the primary dependencies
-- Group SDK imports separately from other Sanity package imports
-- Comment when using non-SDK solutions and why
+- **Import Sanity UI components** for all UI elements before considering custom HTML or other UI libraries
+- Group imports in this order:
+  1. React and third-party libraries
+  2. `@sanity/sdk-react` hooks and utilities
+  3. `@sanity/ui` components
+  4. Other Sanity packages (only when necessary)
+- Comment when using non-SDK or non-Sanity-UI solutions and why
+
+**Example import structure:**
+```typescript
+import React from 'react'
+import {useDocument, useEditDocument} from '@sanity/sdk-react'
+import {Box, Button, Card, Flex, Text} from '@sanity/ui'
+import {SomeIcon} from '@sanity/icons' // Only if needed
+```
 
 
 ### 6. Migration and Updates
