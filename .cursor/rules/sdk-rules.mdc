@@ -97,9 +97,58 @@ import {SomeIcon} from '@sanity/icons' // Only if needed
 ```
 
 
-### 6. Migration and Updates
+### 6. Text Spacing and Legibility
+
+**CRITICAL:** Always ensure proper vertical spacing between text elements to prevent overlapping and maintain readability.
+
+#### Text Spacing Rules
+- **NEVER use `Box` for multiple text elements** without explicit spacing - this causes overlapping text
+- **ALWAYS use `Stack` components** when displaying multiple text elements vertically
+- **Use appropriate `space` values** on Stack components:
+  - `space={1}` - Minimal spacing for tightly related text (e.g., label and value)
+  - `space={2}` - Standard spacing for related text elements (e.g., title and subtitle)
+  - `space={3}` - Medium spacing for distinct but related sections
+  - `space={4}` - Large spacing for separate content sections
+
+#### Text Hierarchy and Legibility
+- **Use proper Text sizes** for hierarchy:
+  - `size={4}` or higher - Main headings
+  - `size={3}` - Section headings
+  - `size={2}` - Subheadings
+  - `size={1}` - Body text, captions, metadata
+- **Apply appropriate text weights**:
+  - `weight="bold"` - Primary headings
+  - `weight="semibold"` - Secondary headings
+  - `weight="medium"` - Emphasized text
+  - Default weight - Regular body text
+- **Use `muted` tone** for secondary/metadata text to create visual hierarchy
+
+#### Anti-patterns to Avoid
+```typescript
+// ❌ BAD: Multiple text elements in Box without spacing
+<Box>
+  <Text size={4}>Title</Text>
+  <Text size={1}>Subtitle</Text>
+</Box>
+
+// ✅ GOOD: Use Stack with proper spacing
+<Stack space={2}>
+  <Text size={4} weight="bold">Title</Text>
+  <Text size={1} muted>Subtitle</Text>
+</Stack>
+```
+
+#### Best Practices
+- **Test text rendering** at different screen sizes
+- **Ensure sufficient contrast** between text and background
+- **Group related text elements** in Stack components with consistent spacing
+- **Use Flex with `gap` prop** for horizontal text spacing when needed
+- **Combine spacing with visual hierarchy** using size, weight, and tone props
+
+### 7. Migration and Updates
 
 When updating or refactoring:
 - Check if newer SDK versions provide better solutions
 - Migrate from direct Sanity package usage to SDK equivalents when possible
 - Follow SDK migration guides for version updates
+- **Review and fix text spacing issues** when refactoring UI components
