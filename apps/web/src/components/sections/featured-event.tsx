@@ -8,7 +8,7 @@ import { RichText } from "@/components/richtext";
 interface FeaturedEventProps {
   _key: string;
   _type: "featuredEvent";
-  title?: string;
+  headline?: string;
   event?: {
     _id: string;
     title: string;
@@ -26,7 +26,7 @@ interface FeaturedEventProps {
 
 export function FeaturedEvent({
   event,
-  title,
+  headline,
   bannerText,
   backgroundImage,
   buttons,
@@ -61,7 +61,7 @@ export function FeaturedEvent({
           {/* Badge */}
           <div className="inline-flex items-center gap-2 bg-primary/90 text-primary-foreground px-3 py-1 rounded-full text-sm font-medium mb-4">
             <Calendar className="h-4 w-4" />
-            {title || "Featured Event"}
+            {event.title || "Featured Event"}
           </div>
 
           {/* Event Date */}
@@ -83,9 +83,9 @@ export function FeaturedEvent({
             </time>
           </div>
 
-          {/* Event Title */}
+          {/* Headline */}
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
-            {event.title}
+            {headline || event.title}
           </h2>
 
           {/* Event Location */}
@@ -111,35 +111,12 @@ export function FeaturedEvent({
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-4">
             {/* Custom buttons from Sanity */}
-            {buttons && buttons.length > 0 ? (
+            {buttons && buttons.length > 0 && (
               <SanityButtons
                 buttons={buttons}
                 buttonClassName="h-11 px-8"
                 className="flex flex-col sm:flex-row gap-4"
               />
-            ) : (
-              <>
-                {/* Default Learn More button */}
-                <Link
-                  href={`/events/${event.slug}`}
-                  className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-11 px-8"
-                >
-                  Learn More
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-
-                {/* Registration button if available */}
-                {event.registrationLink && (
-                  <a
-                    href={event.registrationLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-white/20 bg-white/10 text-white hover:bg-white/20 h-11 px-8"
-                  >
-                    Register Now
-                  </a>
-                )}
-              </>
             )}
           </div>
         </div>

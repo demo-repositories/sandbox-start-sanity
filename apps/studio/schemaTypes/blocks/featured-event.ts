@@ -16,10 +16,11 @@ export const featuredEvent = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: "title",
-      title: "Title",
+      name: "headline",
+      title: "Headline",
       type: "string",
-      description: "Title for the featured event block",
+      description: "The big attention-grabbing text for the featured event",
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "bannerText",
@@ -27,7 +28,7 @@ export const featuredEvent = defineType({
       type: "array",
       of: [{ type: "block" }],
       description:
-        "Rich text to display as the banner text for the featured event",
+        "Optional rich text to display as additional banner text for the featured event",
     }),
     defineField({
       name: "backgroundImage",
@@ -46,10 +47,11 @@ export const featuredEvent = defineType({
   ],
   preview: {
     select: {
-      title: "title",
+      headline: "headline",
+      eventTitle: "event.title",
     },
-    prepare: ({ title }) => ({
-      title,
+    prepare: ({ headline, eventTitle }) => ({
+      title: headline || eventTitle || "Featured Event",
       subtitle: "Featured Event",
     }),
   },
