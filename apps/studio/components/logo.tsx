@@ -1,46 +1,27 @@
 export function Logo() {
   return (
     <svg
-      width="32"
-      height="32"
-      viewBox="0 0 32 32"
-      fill="none"
+      version="1.2"
       xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 1571 1448"
+      width="1571"
+      height="1448"
     >
-      <title>Turbo Start</title>
-      <rect width="32" height="32" rx="16" fill="var(--card-fg-color)" />
-      <path
-        d="M4.68629 21.159C2.98673 19.4595 2.98673 16.704 4.68629 15.0044L12.1081 7.5826L18.2627 13.7373L10.841 21.159C9.14139 22.8586 6.38585 22.8586 4.68629 21.159Z"
-        fill="url(#paint0_linear_2_18)"
-      />
-      <path
-        d="M27.3137 10.841C25.6142 9.14139 22.8586 9.14139 21.1591 10.841L13.7373 18.2627L19.8919 24.4174L27.3137 16.9956C29.0133 15.2961 29.0133 12.5405 27.3137 10.841Z"
-        fill="url(#paint1_linear_2_18)"
-      />
-      <defs>
-        <linearGradient
-          id="paint0_linear_2_18"
-          x1="14.9316"
-          y1="10.9137"
-          x2="4.68629"
-          y2="21.159"
-          gradientUnits="userSpaceOnUse"
-        >
-          <stop stopColor="var(--card-fg-color)" />
-          <stop offset="1" stopColor="var(--card-bg-color)" />
-        </linearGradient>
-        <linearGradient
-          id="paint1_linear_2_18"
-          x1="17.0684"
-          y1="21.0863"
-          x2="27.3137"
-          y2="10.841"
-          gradientUnits="userSpaceOnUse"
-        >
-          <stop stopColor="var(--card-fg-color)" />
-          <stop offset="1" stopColor="var(--card-bg-color)" />
-        </linearGradient>
-      </defs>
+      <title>Capgemini_logo-svg</title>
+      <g id="Layer">
+        <path
+          id="Layer"
+          fill-rule="evenodd"
+          style={{ fill: "#12abdb" }}
+          d="m979.5 1072.6c9.1 127.5 101.2 219.5 244.3 217.6-107.3 105.9-312.4 156.9-481.8 156.9-92.5 0-169.9-19.6-204.9-56.1 142.3-18.1 256.2-125.8 271.7-246.1 191.2-211.6 269.2-539.9 504-539.9 214.9 0 243.9 153.1 257.5 235.8-1.9 189.5-153.4 349.3-349.6 349.3-92.4 0-171.4-32.9-241.2-117.5z"
+        />
+        <path
+          id="Layer"
+          fill-rule="evenodd"
+          style={{ fill: "#0070ad" }}
+          d="m1570.4 844.8c-13.7-82.8-42.7-235.8-257.6-235.8-234.8 0-312.7 328.2-504.1 539.8-60.5 66.8-133.2 121.7-221.6 150.7q-149.1 50.1-298.1-6.2c-171.4-69.4-288.1-242.1-288.1-426.9 0-472.6 651.7-640.9 839.9-866.3h0.1q4.6 1.8 9.3 3.7 4.6 1.8 9.3 3.7 4.6 1.9 9.2 3.8 4.6 1.9 9.2 3.9c152.9 64 298.7 149.1 421.4 261.2 161.6 148.3 266.5 334.2 270.7 554.5 0.3 7.9 0.4 13.7 0.4 13.9z"
+        />
+      </g>
     </svg>
   );
 }
