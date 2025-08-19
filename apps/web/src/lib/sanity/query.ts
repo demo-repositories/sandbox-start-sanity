@@ -12,6 +12,18 @@ const imageFragment = /* groq */ `
   }
 `;
 
+const fileFragment = /* groq */ `
+  file{
+    ...,
+    ...asset->{
+      originalFilename,
+      url,
+      size,
+      mimeType
+    }
+  }
+`;
+
 const customLinkFragment = /* groq */ `
   ...customLink{
     openInNewTab,
@@ -197,6 +209,24 @@ const featureCardsIconBlock = /* groq */ `
   }
 `;
 
+const fileDownloadBlock = /* groq */ `
+  _type == "fileDownload" => {
+    ...,
+    file{
+      ...,
+      asset->{
+        _id,
+        _type,
+        originalFilename,
+        url,
+        size,
+        mimeType,
+        extension
+      }
+    }
+  }
+`;
+
 const pageBuilderFragment = /* groq */ `
   pageBuilder[]{
     ...,
@@ -208,7 +238,8 @@ const pageBuilderFragment = /* groq */ `
     ${eventsListBlock},
     ${featuredEventBlock},
     ${subscribeNewsletterBlock},
-    ${imageLinkCardsBlock}
+    ${imageLinkCardsBlock},
+    ${fileDownloadBlock}
   }
 `;
 

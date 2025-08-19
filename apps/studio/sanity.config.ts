@@ -27,6 +27,9 @@ export default defineConfig({
   projectId: projectId,
   icon: Logo,
   dataset: dataset ?? "production",
+  scheduledPublishing: {
+    enabled: true,
+  },
   plugins: [
     presentationTool({
       resolve: {

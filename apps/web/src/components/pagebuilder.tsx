@@ -12,6 +12,7 @@ import { EventsList } from "./sections/events-list";
 import { FeaturedEvent } from "./sections/featured-event";
 import { FaqAccordion } from "./sections/faq-accordion";
 import { FeatureCardsWithIcon } from "./sections/feature-cards-with-icon";
+import { FileDownload } from "./sections/file-download";
 import { HeroBlock } from "./sections/hero";
 import { ImageLinkCards } from "./sections/image-link-cards";
 import { SubscribeNewsletter } from "./sections/subscribe-newsletter";
@@ -41,6 +42,7 @@ const BLOCK_COMPONENTS = {
   featureCardsIcon: FeatureCardsWithIcon,
   subscribeNewsletter: SubscribeNewsletter,
   imageLinkCards: ImageLinkCards,
+  fileDownload: FileDownload,
 } as const;
 
 type BlockType = keyof typeof BLOCK_COMPONENTS;
