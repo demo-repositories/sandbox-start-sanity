@@ -1,8 +1,9 @@
-import {type SanityConfig} from '@sanity/sdk'
-import {SanityApp} from '@sanity/sdk-react'
-import {Flex, Spinner} from '@sanity/ui'
-import {ExampleComponent} from './ExampleComponent'
-import {SanityUI} from './SanityUI'
+import { type SanityConfig } from "@sanity/sdk";
+import { SanityApp } from "@sanity/sdk-react";
+import { Flex, Spinner } from "@sanity/ui";
+import { ExampleComponent } from "./ExampleComponent";
+import { PageTable } from "./PageTable";
+import { SanityUI } from "./SanityUI";
 
 function App() {
   // apps can access many different projects or other sources of data
@@ -10,15 +11,15 @@ function App() {
     {
       projectId: process.env.SANITY_APP_PROJECT_ID!,
       dataset: process.env.SANITY_APP_DATASET!,
-    }
-  ]
+    },
+  ];
 
   function Loading() {
     return (
       <Flex justify="center" align="center" width="100vw" height="fill">
         <Spinner />
       </Flex>
-    )
+    );
   }
 
   return (
@@ -26,9 +27,10 @@ function App() {
       <SanityApp config={sanityConfigs} fallback={<Loading />}>
         {/* add your own components here! */}
         <ExampleComponent />
+        <PageTable />
       </SanityApp>
     </SanityUI>
   );
 }
 
-export default App
+export default App;
