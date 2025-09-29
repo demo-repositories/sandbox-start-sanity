@@ -5,7 +5,7 @@
   "main": "package.json",
   "license": "UNLICENSED",
   "scripts": {
-    "dev": "sanity dev",
+    "dev": "NODE_ENV=swede sanity dev",
     "format": "prettier --write .",
     "start": "sanity start",
     "lint": "eslint .",
@@ -20,6 +20,7 @@
   ],
   "dependencies": {
     "@sanity/assist": "^4.4.7",
+    "@sanity/document-internationalization": "^4.0.0",
     "@sanity/icons": "^3.7.4",
     "@sanity/orderable-document-list": "^1.4.0",
     "@sanity/ui": "^3.0.6",
