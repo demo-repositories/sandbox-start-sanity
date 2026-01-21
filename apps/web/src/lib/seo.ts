@@ -17,7 +17,7 @@ interface SiteConfig {
 interface PageSeoData extends Metadata {
   title?: string;
   description?: string;
-  slug?: string;
+  slug?: string | null;
   contentId?: string;
   contentType?: string;
   keywords?: string[];
@@ -55,8 +55,12 @@ function buildPageUrl({
   slug,
 }: {
   baseUrl: string;
-  slug: string;
+  slug: string | null | undefined;
 }): string {
+  // Handle null/undefined slug cases
+  if (!slug) {
+    return `${baseUrl}/`;
+  }
   const normalizedSlug = slug.startsWith("/") ? slug : `/${slug}`;
   return `${baseUrl}${normalizedSlug}`;
 }
@@ -67,7 +71,7 @@ function extractTitle({
   siteTitle,
 }: {
   pageTitle?: Maybe<string>;
-  slug: string;
+  slug: string | null | undefined;
   siteTitle: string;
 }): string {
   if (pageTitle) return pageTitle;
@@ -79,7 +83,7 @@ export function getSEOMetadata(page: PageSeoData = {}): Metadata {
   const {
     title: pageTitle,
     description: pageDescription,
-    slug = "/",
+    slug: rawSlug,
     contentId,
     contentType,
     keywords: pageKeywords = [],
@@ -87,6 +91,9 @@ export function getSEOMetadata(page: PageSeoData = {}): Metadata {
     pageType = "website",
     ...pageOverrides
   } = page;
+
+  // Ensure slug is never null/undefined
+  const slug = rawSlug || "/";
 
   const baseUrl = getBaseUrl();
   const pageUrl = buildPageUrl({ baseUrl, slug });
