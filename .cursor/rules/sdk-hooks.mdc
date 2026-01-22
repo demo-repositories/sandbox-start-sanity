@@ -1,5 +1,5 @@
 ---
-globs: apps/sdk/*
+globs: apps/sdk/**/*
 alwaysApply: false
 ---
 
