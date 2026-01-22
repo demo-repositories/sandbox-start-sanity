@@ -14,5 +14,7 @@ export default defineCliConfig({
     host && host !== "main"
       ? `${host}-${productionHostName}`
       : productionHostName,
-  autoUpdates: false,
+  deployment: {
+    autoUpdates: false,
+  },
 });

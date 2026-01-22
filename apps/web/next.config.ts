@@ -1,15 +1,18 @@
 import type { NextConfig } from "next";
+import path from "path";
 
 const nextConfig: NextConfig = {
   /* config options here */
   transpilePackages: ["@workspace/ui"],
   experimental: {
-    reactCompiler: true,
     // ppr: true,
     inlineCss: true,
   },
   logging: {
     fetches: {},
+  },
+  turbopack: {
+    root: path.join(__dirname, "..", ".."),
   },
   images: {
     minimumCacheTTL: 31536000,
