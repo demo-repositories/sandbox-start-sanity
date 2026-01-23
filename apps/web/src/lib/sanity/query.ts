@@ -385,3 +385,38 @@ export const querySettingsData = defineQuery(`
     "contactEmail": contactEmail,
   }
 `);
+
+export const querySampleImages = defineQuery(`
+  *[_type == "sanity.imageAsset"][0...20]{
+    _id,
+    _type,
+    url,
+    originalFilename,
+    altText,
+    metadata {
+      dimensions {
+        width,
+        height,
+        aspectRatio
+      },
+      palette {
+        dominant {
+          background,
+          foreground
+        },
+        vibrant {
+          background,
+          foreground
+        },
+        muted {
+          background,
+          foreground
+        }
+      },
+      lqip,
+      blurHash,
+      hasAlpha,
+      isOpaque
+    }
+  }
+`);

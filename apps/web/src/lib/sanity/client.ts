@@ -23,3 +23,6 @@ const imageBuilder = createImageUrlBuilder({
 
 export const urlFor = (source: SanityImageSource) =>
   imageBuilder.image(source).auto("format").fit("max").format("webp");
+
+// Export raw builder for demo/advanced use cases without default transformations
+export { imageBuilder };
